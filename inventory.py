@@ -34,3 +34,14 @@ class Inventory:
         for w in self.items:
             weight += w
         return weight
+
+    def get_the_heaviest_item(self):
+        '''
+        Tu pytanie na tej samej zasadzie, co we wczesniejszej metodzie
+        jak brac to weight
+        '''
+        weight = self.items[0]
+        for w in range(len(self.items)):
+            if weight < self.items[w]:
+                weight = self.items[w]
+        return weight
