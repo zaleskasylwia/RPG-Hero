@@ -11,3 +11,8 @@ class Inventory:
             #raise?
             print("It's too heavy")
 
+    def drop_item(self, item):
+        if item in self.items:
+            self.items.remove(item)
+        else:
+            print("There is no item like this in inventory")
