@@ -16,3 +16,10 @@ class Inventory:
             self.items.remove(item)
         else:
             print("There is no item like this in inventory")
+
+    def get_inventory_size(self):
+        number_of_items = 0
+        for item in self.items:
+            number_of_items += 1
+
+        return number_of_items
