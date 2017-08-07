@@ -25,21 +25,12 @@ class Inventory:
         return number_of_items
 
     def get_inventory_weight(self):
-        '''
-        Jak dobrać się do weight z klasy Item, bo rozumiem, ze tamta
-        wage chcialabym zsumować, nie korzystam z funkcji wbudowanych np. sum()
-        bo wiem, ze bardziej prawdopodobne jest to, ze kazali by nam ja sami napisac
-        '''
         weight = 0
         for item in self.items:
             weight += item.weight
         return weight
 
     def get_the_heaviest_item(self):
-        '''
-        Tu pytanie na tej samej zasadzie, co we wczesniejszej metodzie
-        jak brac to weight
-        '''
         if len(self.items) == 0:
             return None
 
