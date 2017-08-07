@@ -1,11 +1,11 @@
 class Inventory:
-    def __init__(self, capacity, max_weight, items=None):
+    def __init__(self, capacity, max_weight, items=[]):
         self.capacity = capacity
         self.max_weight = max_weight
-        self.items = items or []
+        self.items = items
 
     def add_item(self, item):
-        if item < self.capacity or item < self.max_weight:
+        if item < self.capacity or item.weight < self.max_weight:
             return self.items.append(item)
         else:
             #raise?
@@ -31,8 +31,8 @@ class Inventory:
         bo wiem, ze bardziej prawdopodobne jest to, ze kazali by nam ja sami napisac
         '''
         weight = 0
-        for w in self.items:
-            weight += w
+        for item in self.items:
+            weight += item.weight
         return weight
 
     def get_the_heaviest_item(self):
@@ -40,8 +40,11 @@ class Inventory:
         Tu pytanie na tej samej zasadzie, co we wczesniejszej metodzie
         jak brac to weight
         '''
-        weight = self.items[0]
-        for w in range(len(self.items)):
-            if weight < self.items[w]:
-                weight = self.items[w]
-        return weight
+        if len(self.items) == 0:
+            return None
+
+        heaviest = self.items[0]
+        for item in self.items:
+            if item.weight > heaviest.weight:
+                heaviest = item
+        return heaviest
