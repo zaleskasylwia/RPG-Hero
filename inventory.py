@@ -35,7 +35,7 @@ class Inventory:
 
     def get_the_heaviest_item(self):
         if len(self.items) == 0:
-            return None
+            return IndexError
 
         heaviest = self.items[0]
         for item in self.items:
