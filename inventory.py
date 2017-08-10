@@ -1,8 +1,11 @@
 class Inventory:
-    def __init__(self, capacity, max_weight, items=[]):
-        self.capacity = capacity
-        self.max_weight = max_weight
-        self.items = items
+    def __init__(self, capacity, max_weight):
+        if type(capacity) is int and type(max_weight) is int:
+            self.capacity = capacity
+            self.max_weight = max_weight
+            self.items = []
+        else:
+            raise TypeError
 
     def add_item(self, item):
         if item < self.capacity or item.weight < self.max_weight:
@@ -32,7 +35,7 @@ class Inventory:
 
     def get_the_heaviest_item(self):
         if len(self.items) == 0:
-            return None
+            return IndexError
 
         heaviest = self.items[0]
         for item in self.items:
