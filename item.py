@@ -4,3 +4,5 @@ class Item:
             self.name = name
             self.description = description
             self.weight = weight
+        else:
+            raise TypeError
