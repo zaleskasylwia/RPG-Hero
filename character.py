@@ -9,4 +9,3 @@ class Character:
 
     def __str__(self):
         return "Name: {} {} is from race {}".format(self.first_name, self.last_name, self.race)
-
