@@ -8,11 +8,15 @@ class Inventory:
             raise TypeError
 
     def add_item(self, item):
-        if item < self.capacity or item.weight < self.max_weight:
-            return self.items.append(item)
+        #
+        if type(item) is str:
+            if item < self.capacity or item.weight < self.max_weight:
+                return self.items.append(item)
+            else:
+                #raise?
+                print("It's too heavy")
         else:
-            #raise?
-            print("It's too heavy")
+            raise TypeError
 
     def drop_item(self, item):
         if item in self.items:
@@ -21,10 +25,10 @@ class Inventory:
             print("There is no item like this in inventory")
 
     def get_inventory_size(self):
+        number of items = sum(self.items)
         number_of_items = 0
         for item in self.items:
             number_of_items += 1
-
         return number_of_items
 
     def get_inventory_weight(self):
