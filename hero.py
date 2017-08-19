@@ -11,7 +11,8 @@ class Hero:
             self.level = 0
 
     def get_items(self):
-        items = [item for item in self.inventory]
+        items = [item for item in self.inventory.items]
+        #return self.inventory.items
         return items
 
     def pick_an_item(self, item):
@@ -21,6 +22,4 @@ class Hero:
         return items
 
     def drop_item(self, item):
-        if item in self.inventory:
-            self.inventory.remove(item)
-        pass
+        self.inventory.drop_item(item)
