@@ -1,5 +1,6 @@
 from item import Item
 
+
 class Inventory:
     def __init__(self, capacity, max_weight):
         if type(capacity) is int and type(max_weight) is int:
@@ -10,19 +11,19 @@ class Inventory:
             raise TypeError
 
     def count_item(self):
-        count_item = 0
+        count_items = 0
         for item in self.items:
-            count_item += 1
-        return count_item
+            count_items += 1
+        return count_items
 
-    def check_capacity_space(self, count_item):
-        if count_item < self.capacity:
+    def check_capacity_space(self, count_items):
+        if count_items < self.capacity:
             return True
         return False
 
     def add_item(self, item):
         if isinstance(item, Item):
-            count_item = count_item()
+            count_items = count_item()
             if check_capacity_space(count_item):
                 item_weight = calculate_item_weight()
                 if check_space_for_item(item_weight):
@@ -67,3 +68,17 @@ class Inventory:
             if item.weight > heaviest.weight:
                 heaviest = item
         return heaviest
+
+    def __str__(self):
+        return '{} capacity, {} max weight, {} list of items'.format(self.capacity, self.max_weight, self.items)
+
+
+def main():
+    i = Inventory(30, 80)
+    print(i)
+    item1 = Item('knife', 'weapon', 2)
+    print(item1)
+    i.add_item(item1)
+
+if __name__ == '__main__':
+    main()

@@ -6,3 +6,15 @@ class Item:
             self.weight = weight
         else:
             raise TypeError
+
+    def __str__(self):
+        return '{} {} {}'.format(self.name, self.description, self.weight)
+
+
+def main():
+    item1 = Item('knife', 'weapon', 2)
+    item2 = Item('rose', 'flower', 1)
+    print(item1)
+
+if __name__ == '__main__':
+    main()
