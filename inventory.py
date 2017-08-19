@@ -74,11 +74,13 @@ class Inventory:
 
 
 def main():
+    item1 = Item('knife', 'weapon', 2)
     i = Inventory(30, 80)
     print(i)
-    item1 = Item('knife', 'weapon', 2)
+    print(i.get_inventory_size())
+
     print(item1)
-    i.add_item(item1)
+    #i.add_item(item1)
 
 if __name__ == '__main__':
     main()
