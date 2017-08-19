@@ -2,7 +2,7 @@ from item import Item
 
 
 class Inventory:
-    def __init__(self, capacity, max_weight):
+    def __init__(self, capacity=10, max_weight=50):
         if type(capacity) is int and type(max_weight) is int:
             self.capacity = capacity
             self.max_weight = max_weight
@@ -78,6 +78,7 @@ def main():
     i = Inventory(30, 80)
     print(i)
     print(i.get_inventory_size())
+    print(i.get_inventory_weight())
 
     print(item1)
     #i.add_item(item1)
