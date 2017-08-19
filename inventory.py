@@ -1,3 +1,5 @@
+from item import Item
+
 class Inventory:
     def __init__(self, capacity, max_weight):
         if type(capacity) is int and type(max_weight) is int:
@@ -7,16 +9,39 @@ class Inventory:
         else:
             raise TypeError
 
+    def count_item(self):
+        count_item = 0
+        for item in self.items:
+            count_item += 1
+        return count_item
+
+    def check_capacity_space(self, count_item):
+        if count_item < self.capacity:
+            return True
+        return False
+
     def add_item(self, item):
-        #
-        if type(item) is str:
-            if item < self.capacity or item.weight < self.max_weight:
-                return self.items.append(item)
-            else:
-                #raise?
-                print("It's too heavy")
+        if isinstance(item, Item):
+            count_item = count_item()
+            if check_capacity_space(count_item):
+                item_weight = calculate_item_weight()
+                if check_space_for_item(item_weight):
+                    space_for_item = self.max_weight - item_weight
+                    if item.weight <= space_for_item:
+                        self.items.append(item)
         else:
-            raise TypeError
+            print("You can't add an item")
+
+    def calculate_item_weight(self):
+        item_weight = 0
+        for item in self.items:
+            item_weight += item.weight
+        return item_weight
+
+    def check_space_for_item(self, item_weight):
+        if item_weight < self.max_weight:
+            return True
+        return False
 
     def drop_item(self, item):
         if item in self.items:
@@ -25,11 +50,7 @@ class Inventory:
             print("There is no item like this in inventory")
 
     def get_inventory_size(self):
-        number of items = sum(self.items)
-        number_of_items = 0
-        for item in self.items:
-            number_of_items += 1
-        return number_of_items
+        return len(self.items)
 
     def get_inventory_weight(self):
         weight = 0
