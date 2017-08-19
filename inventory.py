@@ -10,39 +10,14 @@ class Inventory:
         else:
             raise TypeError
 
-    def count_item(self):
-        count_items = 0
-        for item in self.items:
-            count_items += 1
-        return count_items
-
-    def check_capacity_space(self, count_items):
-        if count_items < self.capacity:
-            return True
-        return False
-
     def add_item(self, item):
         if isinstance(item, Item):
-            count_items = count_item()
-            if check_capacity_space(count_item):
-                item_weight = calculate_item_weight()
-                if check_space_for_item(item_weight):
-                    space_for_item = self.max_weight - item_weight
-                    if item.weight <= space_for_item:
-                        self.items.append(item)
+            if self.get_inventory_size() < self.capacity and self.get_inventory_weight() + item.weight < self.max_weight:
+                self.items.append(item)
+            else:
+                print('too heavy')
         else:
-            print("You can't add an item")
-
-    def calculate_item_weight(self):
-        item_weight = 0
-        for item in self.items:
-            item_weight += item.weight
-        return item_weight
-
-    def check_space_for_item(self, item_weight):
-        if item_weight < self.max_weight:
-            return True
-        return False
+            print("It's not and item")
 
     def drop_item(self, item):
         if item in self.items:
@@ -74,14 +49,19 @@ class Inventory:
 
 
 def main():
-    item1 = Item('knife', 'weapon', 2)
+    item1 = Item('knife', 'weapon', 92)
     i = Inventory(30, 80)
     print(i)
     print(i.get_inventory_size())
     print(i.get_inventory_weight())
 
     print(item1)
-    #i.add_item(item1)
+    print()
+    i.add_item(item1)
+    print(i)
+    print(i.get_inventory_size())
+    print(i.get_inventory_weight())
+
 
 if __name__ == '__main__':
     main()
